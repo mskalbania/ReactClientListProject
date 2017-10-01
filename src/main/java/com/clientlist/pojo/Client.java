@@ -1,8 +1,6 @@
 package com.clientlist.pojo;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -10,7 +8,6 @@ import java.time.LocalDate;
 public class Client {
 
     @Id
-    @JsonIgnore
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(name = "full_name")
