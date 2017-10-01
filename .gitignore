@@ -1,6 +1,12 @@
 target/
 !.mvn/wrapper/maven-wrapper.jar
 
+
+/node_modules
+bundle.js
+npm-debug.log
+.DS_Store
+
 ### STS ###
 .apt_generated
 .classpath
@@ -12,7 +18,6 @@ target/
 ### IntelliJ IDEA ###
 .idea
 *.iws
-*.iml
 *.ipr
 
 ### NetBeans ###
@@ -22,3 +27,5 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+/.idea/
+/target/
