@@ -1,4 +1,4 @@
-import {FETCH_CLIENTS} from "../actions/index";
+import {FETCH_CLIENTS} from "../actions/clients";
 
 const INITIAL_STATE = {all: [], selected: null};
 

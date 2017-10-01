@@ -1,23 +1,26 @@
 import React, {Component} from "react";
+import SearchBar from "./SearchBar";
 import {connect} from "react-redux";
-import {fetchClients} from '../actions/index';
+import {fetchAll} from '../actions/clients';
 
-class ClientList extends Component {
+class ClientListPanel extends Component {
 
     componentWillMount() {
-        this.props.fetchClients();
-        console.log(this.props);
+        this.props.fetchAll();
     }
 
     renderClients() {
-        return (this.props.clients.map((client) =>{
-            <li key={client.id} keyclassName="list-group-item"></li>
+        return (this.props.clients.map((client) => {
+            return (<li key={client.id} className="list-group-item">
+                {client.fullName}
+            </li>);
         }));
     }
 
     render() {
         return (
             <div>
+                <SearchBar/>
                 <h2>Klienci:</h2>
                 <ul className="list-group">
                     {this.renderClients()}
@@ -31,4 +34,4 @@ function mapStateToProps(state) {
     return {clients: state.clients.all}
 }
 
-export default connect(mapStateToProps, {fetchClients})(ClientList);
+export default connect(mapStateToProps, {fetchAll})(ClientListPanel);
