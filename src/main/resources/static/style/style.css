@@ -1,0 +1,23 @@
+form {
+    margin-top: 15px;
+}
+
+span.btn.btn-success, span.btn.btn-primary {
+    margin-bottom: 20px;
+    display: block;
+}
+span.btn.btn-primary{
+    margin-top: 5px;
+}
+
+button.btn.btn-success {
+    width: -webkit-fill-available;
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+h5{
+    margin-bottom: 0;
+}
