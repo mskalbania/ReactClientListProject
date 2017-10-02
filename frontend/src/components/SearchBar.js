@@ -10,9 +10,15 @@ class SearchBar extends Component {
 
     render() {
         return (
-            <input onKeyUp={(e) => {
-                this.props.fetchAllByRegex(e.target.value)
-            }}/>);
+            <form className="form-group">
+                <input className="form-control"
+                       onKeyUp={(e) => {
+                           this.props.fetchAllByRegex(e.target.value)
+                       }}
+                       placeholder="Szukaj"
+                />
+            </form>
+        );
     }
 }
 

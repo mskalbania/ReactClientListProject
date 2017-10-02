@@ -9,10 +9,10 @@ import java.util.List;
 
 public interface ClientRepository extends CrudRepository<Client, Long> {
 
-    @Query(value = "SELECT C FROM Client C WHERE LOWER(C.fullName) LIKE LOWER(CONCAT(:request,'%'))")
+    @Query(value = "SELECT C FROM Client C WHERE LOWER(C.fullName) LIKE LOWER(CONCAT('%',:request,'%'))")
     List<Client> findAllByNameRegex(@Param("request") String request);
 
-    @Query(value = "SELECT * FROM client WHERE EXTRACT(YEAR FROM date) = ?1" ,nativeQuery = true)
+    @Query(value = "SELECT * FROM client WHERE EXTRACT(YEAR FROM date) = ?1", nativeQuery = true)
     List<Client> findClientByYear(int year);
 
     List<Client> findAll();

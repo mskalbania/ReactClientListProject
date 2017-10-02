@@ -1,11 +1,23 @@
-form{
+form {
     margin-top: 15px;
 }
 
-form a{
-    margin-left: 5px;
+span.btn.btn-success, span.btn.btn-primary {
+    margin-bottom: 20px;
+    display: block;
+}
+span.btn.btn-primary{
+    margin-top: 5px;
 }
 
-div .alert {
-    margin-top: 15px;
+button.btn.btn-success {
+    width: -webkit-fill-available;
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+h5{
+    margin-bottom: 0;
 }
