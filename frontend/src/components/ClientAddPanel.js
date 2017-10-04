@@ -4,11 +4,12 @@ import {reduxForm} from 'redux-form';
 import {postNew} from "../actions/clients";
 import * as PropTypes from "react/lib/ReactPropTypes";
 
+
 class ClientAddPanel extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {success: false}
+        this.state = {success: false, invalidForm: true}
     }
 
     static contextTypes = {
@@ -22,8 +23,12 @@ class ClientAddPanel extends Component {
             this.setState({success: true});
             setTimeout(() => {
                 this.context.router.push("/");
-            }, 3000);
+            }, 2000);
         })
+    }
+
+    testmethod(){
+        console.log(this.props.fields);
     }
 
     render() {
@@ -72,6 +77,7 @@ class ClientAddPanel extends Component {
                     </div>
                     <button type="submit" className="btn btn-success text-center"
                             disabled={this.props.invalid}>Dodaj</button>
+                    {this.testmethod()}
                 </form>
             </div>
         );
@@ -80,27 +86,18 @@ class ClientAddPanel extends Component {
 
 function validate(values) {
     const errors = {};
-
     if (!values.fullName) {
-        errors.title = 'Pole imie i nazwisko nie może byc puste';
-    }
-    if (!values.leftLens) {
-        errors.content = 'Pole lewe oko nie może byc puste';
-    }
-    if (!values.rightLens) {
-        errors.categories = 'Pole prawe oko nie może byc puste';
-    }
-
-    if (!values.lensesType) {
-        errors.categories = 'Pole typ soczewek nie może byc puste';
-    }
-
-    if (!values.holderModel) {
-        errors.categories = 'Pole model oprawki nie może byc puste';
-    }
-
-    if (!values.date) {
-        errors.categories = 'Wybierz datę';
+        errors.fullName = 'Pole imie i nazwisko nie może byc puste';
+    } else if (!values.leftLens) {
+        errors.leftLens = 'Pole lewe oko nie może byc puste';
+    } else if (!values.rightLens) {
+        errors.rightLens = 'Pole prawe oko nie może byc puste';
+    } else if (!values.lensesType) {
+        errors.lensesType = 'Pole typ soczewek nie może byc puste';
+    } else if (!values.holderModel) {
+        errors.holderModel = 'Pole model oprawki nie może byc puste';
+    }else if (!values.date) {
+        errors.date = 'Wybierz datę';
     }
     return errors;
 }

@@ -1,12 +1,31 @@
-form {
-    margin-top: 15px;
+body {
+    background: #ddcaa4;
+}
+
+.selected{
+    border-bottom: none;
+}
+
+div.container{
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    margin-bottom: 5px;
+    border-top: none;
+}
+
+div#main.container{
+    background: white;
+    height: 99vh;
+    padding-top: 10px;
+    margin-top: 3px;
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
 
 span.btn.btn-success, span.btn.btn-primary {
     margin-bottom: 20px;
     display: block;
 }
-span.btn.btn-primary{
+
+span.btn.btn-primary {
     margin-top: 5px;
 }
 
@@ -14,10 +33,14 @@ button.btn.btn-success {
     width: -webkit-fill-available;
 }
 
-a:hover{
+a:hover {
     text-decoration: none;
 }
 
-h5{
+h5 {
     margin-bottom: 0;
+}
+
+li.list-group-item{
+    margin-bottom: 1px !important;
 }

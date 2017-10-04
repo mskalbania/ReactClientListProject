@@ -3,8 +3,29 @@ import SearchBar from "./SearchBar";
 import {connect} from "react-redux";
 import {Link} from 'react-router';
 import {fetchAll} from '../actions/clients';
+import{fadeInUp, fadeInUpBig, fadeOutDown} from 'react-animations';
+import{StyleSheet, css} from 'aphrodite';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
+const styles = StyleSheet.create({
+
+    fadeInUp: {
+        animationName: fadeInUp,
+        animationDuration: '0.5s',
+    },
+
+    fadeInUpBig: {
+        animationName: fadeInUp,
+        animationDuration: '0.5s',
+    }
+});
 
 class ClientListPanel extends Component {
+
+    constructor() {
+        super();
+        this.state = {selected: null};
+    }
 
     componentWillMount() {
         this.props.fetchAll();
@@ -13,10 +34,22 @@ class ClientListPanel extends Component {
     renderClients() {
         return (this.props.clients.map((client) => {
             return (
-                <li key={client.id} className="list-group-item">
-                    <span className="float-right">{client.date.year}</span>
-                    <h5>{client.fullName}</h5>
-                </li>
+                <div>
+                    <li key={client.id}
+                        className={`list-group-item " + ${css(styles.fadeInUp)}
+                        ${this.props.selected === client.id ? " selected" : ""}`
+                        }
+                        onClick={() => {
+                            this.setState({selected: client.id})
+                        }}>
+                        <span className="float-right">{client.date.year}</span>
+                        <h5>{client.fullName}</h5>
+                    </li>
+                    {client.id === this.state.selected &&
+                    <div className="container">
+                          SELECTED
+                    </div>}
+                </div>
             );
         }));
     }
@@ -25,7 +58,7 @@ class ClientListPanel extends Component {
 
         if (this.props.error) {
             return (
-                <div className="alert alert-danger text-center" role="alert">
+                <div className={"alert alert-danger text-center " + css(styles.fadeInUpBig)} role="alert">
                     Nic nie znaleziono...
                 </div>
             );
@@ -37,7 +70,7 @@ class ClientListPanel extends Component {
             );
         } else {
             return (
-                <div className="alert alert-warning text-center" role="alert">
+                <div className={"alert alert-warning text-center " + css(styles.fadeInUpBig)} role="alert">
                     Ładowanie...
                 </div>
             );
